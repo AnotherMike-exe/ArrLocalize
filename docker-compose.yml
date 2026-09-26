@@ -7,7 +7,9 @@ services:
       # /media and the debrid mount must have the SAME container paths as in Radarr
       # and Sonarr. Copy both lines from the Radarr container, and change nothing.
       - /mnt/user/media:/media
-      - /mnt/decypharr:/mnt/decypharr:rslave
+      # The debrid mount. On PlumServer, Radarr maps /mnt/user/rclone to /mnt, and the
+      # links point to /mnt/realdebrid/... Use the same container path, or every link is broken.
+      - /mnt/user/rclone:/mnt:rslave
     # SONARR_URL, SONARR_API_KEY, RADARR_URL and RADARR_API_KEY. See .env.example.
     env_file: .env
     environment:

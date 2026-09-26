@@ -38,7 +38,9 @@ Docker tab → **Add Container**. Set **Advanced View** on.
 | Debrid | the same as Radarr | the same as Radarr | **Read/Write - Slave** |
 
 The container path of Media and Debrid must be the same as in Radarr. ArrLocalize opens the
-path that Radarr gives, with no translation. Use **Read/Write - Slave** for the debrid
+path that Radarr gives, with no translation. On PlumServer this is `/mnt/user/rclone` →
+`/mnt`, because the links point to `/mnt/realdebrid/__all__/...`. Check where a link points
+with `docker exec Arr-Localize readlink "<file>"`. Use **Read/Write - Slave** for the debrid
 mount, because it is an rclone FUSE mount that can start after the container.
 
 ### Variables
