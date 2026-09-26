@@ -10,12 +10,12 @@ Anything a user would ask for goes to GitHub instead:
 
 ## Now
 
-- [ ] Tag `arr-service` `v0.1.0`. Until then, `pip install -e ".[dev]"`, CI and the image build fail.
-- [ ] Build the image and run it once with `LOCALIZE_EXECUTE=false` on the server.
+- [x] Tag `arr-service` `v0.1.0`
+- [x] Run the image on Unraid, dry-run and then execute (Wicked: For Good, 85 GB, 22 min)
 
 ## Next
 
-- [ ] Set `LOCALIZE_EXECUTE=true` after the first dry-run log looks right.
+
 - [ ] Test one TV request from start to end.
 - [ ] Delete a `.localize.partial` file left by a container restart at the start of a pass.
 
@@ -29,4 +29,4 @@ Anything a user would ask for goes to GitHub instead:
 grep -rn "\[[a-z]" README.md docs/*.md
 ```
 
-- [ ] docker-compose.yml — the `/media` and debrid mount lines are examples. Copy them from the Radarr container.
+- [x] docker-compose.yml — mounts match PlumServer
