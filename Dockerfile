@@ -1,5 +1,5 @@
 # Build stage: install the package and its one dependency into a venv.
-FROM python:3.12-alpine3.24 AS build
+FROM python:3.14-alpine3.24 AS build
 RUN apk add --no-cache git
 WORKDIR /build
 RUN python -m venv /venv
@@ -15,7 +15,7 @@ COPY src ./src
 RUN pip install --no-cache-dir --no-deps .
 
 # Runtime stage: the venv, supervisord and su-exec only.
-FROM python:3.12-alpine3.24
+FROM python:3.14-alpine3.24
 LABEL org.opencontainers.image.source="https://github.com/AnotherMike-exe/ArrLocalize"
 LABEL org.opencontainers.image.description="Copy Decypharr debrid symlinks imported by Sonarr and Radarr to permanent local files."
 LABEL org.opencontainers.image.licenses="MIT"
