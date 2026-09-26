@@ -1,0 +1,36 @@
+[project]
+name = "arr-localize"
+version = "0.1.0"
+description = "Copy Decypharr debrid symlinks imported by Sonarr and Radarr to permanent local files."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Plum Solutions" }]
+dependencies = ["arr-service @ git+https://github.com/AnotherMike-exe/arr-service@v0.1.0"]
+
+[project.optional-dependencies]
+dev = ["pytest", "ruff"]
+
+[project.urls]
+Repository = "https://github.com/AnotherMike-exe/ArrLocalize"
+
+[project.scripts]
+arr-localize = "arr_localize.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 110
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests/unit"]
+pythonpath = ["src"]

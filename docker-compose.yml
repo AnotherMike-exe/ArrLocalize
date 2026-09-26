@@ -1,0 +1,22 @@
+services:
+  ArrLocalize:
+    image: ghcr.io/anothermike-exe/arr-localize:0.1.0
+    container_name: ArrLocalize
+    volumes:
+      - ./app-config:/config
+      # /media and the debrid mount must have the SAME container paths as in Radarr
+      # and Sonarr. Copy both lines from the Radarr container, and change nothing.
+      - /mnt/user/media:/media
+      - /mnt/decypharr:/mnt/decypharr:rslave
+    # SONARR_URL, SONARR_API_KEY, RADARR_URL and RADARR_API_KEY. See .env.example.
+    env_file: .env
+    environment:
+      - PUID=99
+      - PGID=100
+      - UMASK=002
+      - TZ=America/Los_Angeles
+      - LOCALIZE_TAG=seerr
+      - LOCALIZE_INTERVAL=900
+      # false: log the plan only. Set true after the first log looks right.
+      - LOCALIZE_EXECUTE=false
+    restart: unless-stopped
