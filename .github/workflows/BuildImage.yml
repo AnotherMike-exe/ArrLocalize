@@ -2,7 +2,7 @@ name: BuildImage
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
     tags: ["v*"]
 
 permissions:
@@ -30,6 +30,8 @@ jobs:
           images: ghcr.io/anothermike-exe/arr-localize
           tags: |
             type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=dev,enable=${{ github.ref == 'refs/heads/dev' }}
+            type=sha,prefix=dev-,enable=${{ github.ref == 'refs/heads/dev' }}
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
       - uses: docker/build-push-action@v7

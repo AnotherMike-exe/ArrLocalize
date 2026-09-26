@@ -71,10 +71,14 @@ There is no schema and no migration. A record is only read by `undo-tags`.
 
 ## CI/CD and secrets
 
+Work happens on `dev`. A push to `dev` builds the `:dev` image, which the Unraid test
+container runs. `dev` goes to `main` through a pull request with a rebase merge.
+
+
 | Workflow | Triggers on | Does |
 |---|---|---|
-| `Review.yml` | pull request, push to `main` | ruff lint and format, pytest `tests/unit`, automated review |
-| `BuildImage.yml` | push to `main`, tag `v*` | builds amd64 and arm64, pushes to GHCR: `latest` on `main`, the semver tags on a release |
+| `Review.yml` | pull request, push to `main` or `dev` | ruff lint and format, pytest `tests/unit`, automated review |
+| `BuildImage.yml` | push to `main` or `dev`, tag `v*` | builds amd64 and arm64, pushes to GHCR: `latest` on `main`, `dev` and `dev-<sha>` on `dev`, the semver tags on a release |
 | `dependabot.yml` | weekly | GitHub Actions, pip and Docker base image updates |
 
 | Secret | Used by | Still to create |
