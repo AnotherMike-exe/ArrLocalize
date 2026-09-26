@@ -94,6 +94,7 @@ Full list: [docs/DEV-SETUP.md](DEV-SETUP.md)
 
 - [Architecture](ARCHITECTURE.md)
 - [Dev setup](DEV-SETUP.md)
+- [Unraid testing](UnraidTesting.md): run the `:dev` image on Unraid
 - [Issues](https://github.com/AnotherMike-exe/ArrLocalize/issues)
 
 ---

@@ -95,3 +95,4 @@ advance guesses. One written from real failures does not.
 | How Claude should work here | `docs/CLAUDE.md` |
 | Commands, variables and paths at a glance | `docs/QUICK-REFERENCE.md` |
 | What it does, for a user | `README.md` |
+| Run the `:dev` image on Unraid | `docs/UnraidTesting.md` |
