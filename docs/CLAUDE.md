@@ -81,6 +81,13 @@ command with `--execute`.
 **Ask early.** An architecture question answered before the work costs a minute. The
 same question answered after costs the work.
 
+**Branches**: work on `dev`. A push to `dev` builds the `:dev` image for the Unraid test
+container. To release, merge a `dev` → `main` pull request with **rebase**, then reset
+`dev` to `main` (`git switch dev && git reset --hard origin/main && git push
+--force-with-lease origin dev`). The rebase merge gives the commits new IDs, and
+without the reset the next pull request replays them. The `dev` ruleset allows this
+force push, and it still blocks deletion and merge commits.
+
 Standing rules for this repo: rebase, never merge. `_resources/` never enters git. Docs
 live in `docs/`, and `README.md` is the only root doc. CI green before merge.
 
